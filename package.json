@@ -1,0 +1,15 @@
+{
+  "name": "immudb-nextjs",
+  "version": "1.0.0",
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start"
+  },
+  "dependencies": {
+    "immudb-node": "^1.1.1",
+    "next": "13.0.0",
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1"
+  }
+}

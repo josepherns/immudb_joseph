@@ -1,0 +1,23 @@
+version: '3.7'
+services:
+  immudb:
+    image: codenotary/immudb:1.9.6
+    container_name: immudb_joseph
+    ports:
+      - "3322:3322"  # gRPC port
+      - "8080:8080"  # Web console and Swagger UI
+    networks:
+      - immudb-network
+    environment:
+      - IMMUDDB_PASS=immudb  # password for immudb superadmin
+      - IMMUDDB_USER=immudb  # username for immudb superadmin
+    volumes:
+      - immudb-data:/var/lib/immudb
+
+networks:
+  immudb-network:
+    driver: bridge
+
+volumes:
+  immudb-data:
+    driver: local
