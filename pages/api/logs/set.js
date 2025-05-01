@@ -26,7 +26,7 @@ export default async function handler(req, res) {
     // Login to Immudb with credentials
     await cl.login({ user: IMMUDB_USER, password: IMMUDB_PWD });
 
-    const logKey = `log:${new Date(timestamp).getTime()}:${level.toLowerCase()}`;
+    const logKey = `update`;
     const logValue = JSON.stringify({
       timestamp,
       message,
@@ -36,6 +36,8 @@ export default async function handler(req, res) {
 
     // Store log in Immudb
     const setRes = await cl.set({ key: logKey, value: logValue });
+
+    console.log(setRes,'yes')
 
     return res.status(200).json({
       success: true,

@@ -168,7 +168,7 @@ export default function Home() {
       <div>
         <h2>Available Log Keys</h2>
         <ul>
-          {logKeys.map((key) => (
+          {logKeys?.map((key) => (
             <li key={key}>{key}</li>
           ))}
         </ul>

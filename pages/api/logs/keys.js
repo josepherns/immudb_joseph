@@ -13,14 +13,15 @@ export default async function handler(req, res) {
       // Login to Immudb
       await cl.login({ user: IMMUDB_USER, password: IMMUDB_PWD });
 
-      // Define the Get request parameters
-      const getReq = { key: '*' }; // Use '*' to get all keys
-
-      // Fetch all keys
-      const getRes = await cl.get(getReq);
-
+      const txScanReq = {
+        key:'update'
+      };
+    
+      const txScanRes = await cl.history(txScanReq);
+      
+      console.log(txScanRes,'yes')
       // Return the keys as a response
-      res.status(200).json(getRes);
+      res.status(200).json(txScanRes);
     } catch (error) {
       console.error('Error retrieving keys:', error);
       res.status(500).json({ error: error.message });
